@@ -22,6 +22,7 @@ class CreateBalanceRequestsTable extends Migration
             $table->string('message');
             $table->bigInteger('amount');
             $table->tinyInteger('status');
+            $table->tinyInteger('type');
 
         });
     }

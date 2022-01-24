@@ -7,58 +7,32 @@ use Illuminate\Http\Request;
 
 class balanceRequestsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return balance_requests::all();
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        return balance_requests::create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\balance_requests  $balance_requests
-     * @return \Illuminate\Http\Response
-     */
-    public function show(balance_requests $balance_requests)
+    public function show($id)
     {
-        //
+       return balance_requests::find($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\balance_requests  $balance_requests
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, balance_requests $balance_requests)
+    public function update(Request $request)
     {
-        //
+        $balance_request = balance_requests::find($request['id']);
+        $balance_request->update($request->all());
+
+        return $balance_request;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\balance_requests  $balance_requests
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(balance_requests $balance_requests)
+    public function destroy($id)
     {
-        //
+        return balance_requests::destroy($id);
     }
 }
