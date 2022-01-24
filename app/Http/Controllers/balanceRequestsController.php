@@ -31,8 +31,8 @@ class balanceRequestsController extends Controller
         return $balance_request;
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        return balance_requests::destroy($id);
+        return balance_requests::destroy($request['id']);
     }
 }

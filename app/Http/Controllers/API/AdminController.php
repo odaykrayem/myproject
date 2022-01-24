@@ -117,11 +117,37 @@ class AdminController extends Controller
 
     //Requests CRUD
     public function storeRequest(Request $request){
-        
         try
         {
             $requestObject = new balanceRequestsController();
             $result = $requestObject->store($request);
+          if ($result){
+            
+            return response()->json([
+                'code' => '200',
+                'message' => 'Request Saved Successfully',
+            ]);
+          }else {
+            return response()->json([
+                'code' => '400',
+                'message' => 'Error saving request',
+            ]);
+          }
+
+        } catch (\Exception $exception) {
+            return response()->json([
+                'code' => '400',
+                'message' => $exception->getMessage(),
+            ]);
+        }
+       
+    }
+     //Requests CRUD
+     public function updateRequest(Request $request){
+        try
+        {
+            $requestObject = new balanceRequestsController();
+            $result = $requestObject->update($request);
           if ($result){
             
             return response()->json([
@@ -143,10 +169,31 @@ class AdminController extends Controller
         }
        
     }
-    //Requests CRUD
-    public function deleteRequest( $id){
-        $requestObject = new balanceRequestsController();
-        $requestObject->balanceRequestsController::destroy($id);
+    public function deleteRequest(Request $request){
+        try
+        {
+            $requestObject = new balanceRequestsController();
+            $result = $requestObject->destroy($request);
+          if ($result){
+            
+            return response()->json([
+                'code' => '200',
+                'message' => 'Request Deleted Successfully',
+            ]);
+          }else {
+            return response()->json([
+                'code' => '400',
+                'message' => 'Error Deleting request',
+            ]);
+          }
+
+        } catch (\Exception $exception) {
+            return response()->json([
+                'code' => '400',
+                'message' => $exception->getMessage(),
+            ]);
+        }
+      
     }
 
 
