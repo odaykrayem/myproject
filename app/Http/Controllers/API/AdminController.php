@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Events\ClientCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\balanceRequestsController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Helpers\Helper;
 use App\Models\balance_requests;
 use App\Models\categories;
 use App\Models\category_cards;
