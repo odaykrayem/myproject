@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\historyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,15 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
     //Balance request 
     Route::post('requests', [AdminController::class, 'getRequests']);
-    Route::post('histories', [AdminController::class, 'getHistory']);
     Route::post('store_request', [AdminController::class, 'storeRequest']);
     Route::post('delete_request', [AdminController::class, 'deleteRequest']);
     Route::post('update_request', [AdminController::class, 'updateRequest']);
+
+    Route::post('histories', [historyController::class, 'getHistory']);
+    Route::post('user_histories', [historyController::class, 'getUserHistory']);
+    Route::post('add_history', [historyController::class, 'store']);
+    Route::post('update_history', [historyController::class, 'update']);
+    Route::post('delete_history', [historyController::class, 'destroy']);
 
 
     Route::get('market_cards', [AdminController::class, 'getMarketCards']);
