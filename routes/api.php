@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () 
     Route::post('delete_request', [AdminController::class, 'deleteRequest']);
     Route::post('update_request', [AdminController::class, 'updateRequest']);
 
+    //history requests
     Route::post('histories', [historyController::class, 'getHistory']);
     Route::post('user_histories', [historyController::class, 'getUserHistory']);
     Route::post('add_history', [historyController::class, 'store']);
