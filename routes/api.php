@@ -14,7 +14,7 @@ use App\Http\Controllers\API\AdminController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
     //Balance request 
     Route::post('requests', [AdminController::class, 'getRequests']);
     Route::post('histories', [AdminController::class, 'getHistory']);
