@@ -1,1 +1,1 @@
-Laravel api for simple e-commerce flutter app.
+Laravel API for organizational e-commerce flutter app.
